@@ -15,7 +15,7 @@ namespace ProjectSynth.Mod
 {
     [BepInDependency(R2API.ContentManagement.R2APIContentManager.PluginGUID)]
     [BepInDependency(ItemAPI.PluginGUID)]
-    [BepInDependency("com.rune580.riskofoptions")]
+    [BepInDependency("com.rune580.riskofoptions", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.salattwav.SYNClib", BepInDependency.DependencyFlags.HardDependency)]
 
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
