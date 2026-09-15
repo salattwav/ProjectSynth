@@ -3,6 +3,7 @@
 
 # Dev
 Junk/
+\deploy_path.txt
 
 # User-specific files
 *.suo
