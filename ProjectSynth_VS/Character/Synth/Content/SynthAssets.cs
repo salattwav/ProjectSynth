@@ -161,9 +161,9 @@ namespace ProjectSynth.Character.Synth.Content
             ccpMikuBeam.data.minPitch = -70;
             ccpMikuBeam.data.maxPitch = 70;
             ccpMikuBeam.data.wallCushion = 0.1f;
-            ccpMikuBeam.data.pivotVerticalOffset = 2f;
-            ccpMikuBeam.data.idealLocalCameraPos = new Vector3(2, -2.5f, -2f);
-            ccpMikuBeam.data.fov = 75f;
+            ccpMikuBeam.data.pivotVerticalOffset = 0f;
+            ccpMikuBeam.data.idealLocalCameraPos = new Vector3(2, -0.5f, -1.5f);
+            ccpMikuBeam.data.fov = 95f;
         }
 
         private static void CreateMaterials()
