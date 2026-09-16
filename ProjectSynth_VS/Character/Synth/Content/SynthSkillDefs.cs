@@ -287,7 +287,7 @@ namespace ProjectSynth.Character.Synth.Content
                 activationState = new SerializableEntityStateType(typeof(MikuBeamLeap)),
                 interruptPriority = InterruptPriority.PrioritySkill,
 
-                baseRechargeInterval = 4f,
+                baseRechargeInterval = 21f,
                 baseMaxStock = 1,
                 rechargeStock = 1,
                 requiredStock = 1,

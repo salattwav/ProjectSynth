@@ -23,11 +23,11 @@
         public static float RollingGirlEnemyGrabForceDamping { get; set; } = 0.5f;
 
         // 39 Music numbers
-        public static float ThirtyNineMusicDuration { get; set; } = 0.9f;
-        public static float ThirtyNineMusicDamageCoefficient { get; set; } = 1.6f;
+        public static float ThirtyNineMusicDuration { get; set; } = 0.4f;
+        public static float ThirtyNineMusicDamageCoefficient { get; set; } = 0.4f;
         public static float ThirtyNineMusicProjectileForce { get; set; } = 20.0f;
-        public static float ThirtyNineMusicBloom { get; set; } = 5.0f;
-        public static float ThirtyNineMusicRecoilAmplitude { get; set; } = 1.8f;
+        public static float ThirtyNineMusicBloom { get; set; } = 1.2f;
+        public static float ThirtyNineMusicRecoilAmplitude { get; set; } = 1.1f;
 
         // Metro numbers
         public static int MetroSuccessfulHitCooldownInBeats { get; set; } = 4;
@@ -45,7 +45,7 @@
         public static float PumpedUpFOVLerpDuration { get; set; } = 1.0f;
 
         // Encore numbers
-        public static int EncoreInflictedStacksAmount { get; set; } = 2;
+        public static int EncoreInflictedStacksAmount { get; set; } = 4;
         public static float EncoreDamageScaleCoefficient { get; set; } = 0.8f;
 
         // Culture Shock numbers
