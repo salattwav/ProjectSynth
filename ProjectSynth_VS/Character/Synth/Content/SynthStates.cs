@@ -21,8 +21,6 @@ namespace ProjectSynth.Character.Synth.Content
             ContentAddition.AddEntityState(typeof(PumpedUp), out _);
             ContentAddition.AddEntityState(typeof(RollingGirl), out _);
             ContentAddition.AddEntityState(typeof(MikuBeam), out _);
-            //ContentAddition.AddEntityState(typeof(MikuBeamLeap), out _);
-            //ContentAddition.AddEntityState(typeof(MikuBeamSustain), out _);
 
             // DivaBase
             ContentAddition.AddEntityState(typeof(Arm), out _);

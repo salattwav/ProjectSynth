@@ -285,7 +285,7 @@ namespace ProjectSynth.Character.Synth.Content
 
                 activationStateMachineName = "Weapon",
                 activationState = new SerializableEntityStateType(typeof(MikuBeam)),
-                interruptPriority = InterruptPriority.PrioritySkill,
+                interruptPriority = InterruptPriority.Skill,
 
                 baseRechargeInterval = 21f,
                 baseMaxStock = 1,
