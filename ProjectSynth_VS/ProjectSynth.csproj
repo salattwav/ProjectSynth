@@ -42,7 +42,7 @@
 
 	<ItemGroup>
 	  <Reference Include="RiskOfOptions">
-	    <HintPath>Libs\Rune580-Risk_Of_Options-2.8.6\plugins\RiskOfOptions\RiskOfOptions.dll</HintPath>
+	    <HintPath>Libs\RiskOfOptions.dll</HintPath>
 	  </Reference>
 	  <Reference Include="SYNClib">
 	    <HintPath>Libs\SYNClib.dll</HintPath>
