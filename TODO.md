@@ -1,3 +1,8 @@
+Model
+=====
+
+- looks pretty messed up on super low setting, figure out what do to with this.
+
 Skills
 ======
 
