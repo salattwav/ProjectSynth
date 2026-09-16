@@ -1,4 +1,5 @@
-﻿using ProjectSynth.Character.Synth.Content;
+﻿using EntityStates;
+using ProjectSynth.Character.Synth.Content;
 using ProjectSynth.Components;
 using ProjectSynth.Mod;
 using ProjectSynth.Modules.BaseContent.BaseStates.Metro;
@@ -83,6 +84,11 @@ namespace ProjectSynth.States.Synth.PumpedUp
 
             cameraOverride?.RemoveModifier(fovHandle, lerpDuration, CharacterCameraOverride.EaseInOut);
             shaderOverlay?.SetActive(false, lerpDuration / 2f);
+        }
+
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.PrioritySkill;
         }
 
         public override void OnMetronomeHit(BaseMetroState metroState)
