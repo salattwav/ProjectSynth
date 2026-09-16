@@ -159,7 +159,7 @@ namespace ProjectSynth.Character.Synth.Content
             ccpMikuBeam = ScriptableObject.CreateInstance<CharacterCameraParams>();
             ccpMikuBeam.name = "ccpMikuBeam";
             ccpMikuBeam.data.minPitch = -70;
-            ccpMikuBeam.data.maxPitch = 50;
+            ccpMikuBeam.data.maxPitch = 70;
             ccpMikuBeam.data.wallCushion = 0.1f;
             ccpMikuBeam.data.pivotVerticalOffset = 2f;
             ccpMikuBeam.data.idealLocalCameraPos = new Vector3(2, -2.5f, -2f);

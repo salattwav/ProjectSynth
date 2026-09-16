@@ -284,7 +284,7 @@ namespace ProjectSynth.Character.Synth.Content
                 icon = SynthAssets.tex_icon_MikuBeam,
 
                 activationStateMachineName = "Weapon",
-                activationState = new SerializableEntityStateType(typeof(MikuBeamLeap)),
+                activationState = new SerializableEntityStateType(typeof(MikuBeam)),
                 interruptPriority = InterruptPriority.PrioritySkill,
 
                 baseRechargeInterval = 21f,

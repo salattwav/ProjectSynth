@@ -2306,6 +2306,8 @@ MonoBehaviour:
     transform: {fileID: 2052312077483128636}
   - name: Skirt
     transform: {fileID: 7785478302725784931}
+  - name: Root
+    transform: {fileID: 4189921060599540339}
 --- !u!114 &-4130880450403621293
 MonoBehaviour:
   m_ObjectHideFlags: 0
