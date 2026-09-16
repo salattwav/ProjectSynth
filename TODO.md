@@ -26,6 +26,5 @@ Skills
 ### Special (miku beam)
 
 - remove fixed angle on arming, it makes movement awkward.
-- fix dmg reduction, it is way too strong.
 - after usage puts into a permanent state of shield and slowed,
 went into a permanent cooldown makes it impossible to shoot, figure out what is going on.

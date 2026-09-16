@@ -47,7 +47,7 @@ namespace ProjectSynth.States.Synth.Weapon
             if (NetworkServer.active)
             {
                 base.characterBody.AddBuff(RoR2Content.Buffs.Slow80);
-                base.characterBody.AddBuff(RoR2Content.Buffs.ElephantArmorBoost);
+                base.characterBody.AddBuff(RoR2Content.Buffs.ArmorBoost);
             }
 
             leapProcessing = false;
@@ -231,7 +231,7 @@ namespace ProjectSynth.States.Synth.Weapon
             if (NetworkServer.active)
             {
                 base.characterBody.RemoveBuff(RoR2Content.Buffs.Slow80);
-                base.characterBody.RemoveBuff(RoR2Content.Buffs.ElephantArmorBoost);
+                base.characterBody.RemoveBuff(RoR2Content.Buffs.ArmorBoost);
             }
 
             base.OnExit();
