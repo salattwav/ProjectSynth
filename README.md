@@ -8,33 +8,44 @@ Building
 
 - [Git](https://git-scm.com/downloads) (obviously)
 - [.NET 8 SDK](https://dotnet.microsoft.com/download) or newer.
-- [Visual Studio 2022 17.8+](https://visualstudio.microsoft.com/downloads/) with the _**".NET desktop development"**_ workload
-(or any other IDE of your choice for that matter)
+- [Visual Studio 2022 17.8+](https://visualstudio.microsoft.com/downloads/)
+with the _**".NET desktop development"**_ and _**"Game development with Unity"**_ workloads
+to make you life a bit easier.
+
+###### _*or use any other IDE of your choice for that matter_
 
 ### Setup
 
-1. Clone the repo
+1. Clone the repo:
 	
 	```sh
 	git clone https://github.com/salattwav/ProjectSynth.git
 	```
 
-2. Navigate to **ProjectSynth_VS** folder, and run next command to create a `deploy_path.txt` file.
-Replace `[PATH_TO_YOUR_MODS_FOLDER]` with an actual path to your mods folder.
+3. Navigate to **ProjectSynth_VS** folder:
 
-	Your path should look something like this:
-
-	`D:\[YOUR_R2MODMAN_FOLDER]\r2profiles\RiskOfRain2\profiles\[YOUR_PROFILE_NAME]\BepInEx\plugins`
-	
 	```sh
-	echo "[PATH_TO_YOUR_MODS_FOLDER]" > .\deploy_path.txt
+	cd ProjectSynth\ProjectSynth_VS
 	```
 
-	Contents of `deploy_path.txt` will be fetched by `PostBuild.bat`, which will collect
-	all the necessary files into one folder, thus creating a mod folder,
-	and put this folder where your mods are located.
+4. Create a `deploy_path.txt` file.
 
-3. Open **ProjectSynth.sln** file.
+	Find a path to your mods. It should look something like this:	
+
+	`D:\[YOUR_R2MODMAN_FOLDER]\r2profiles\RiskOfRain2\profiles\[YOUR_PROFILE_NAME]\BepInEx\plugins`
+		
+	Replace `[PATH_TO_YOUR_MODS_FOLDER]` below with your path and run it:
+
+	```sh
+	echo "[PATH_TO_YOUR_MODS_FOLDER]" > .\deploy_path.txt
+	```	
+
+	`deploy_path.txt` tells `PostBuild.bat` where to paste final build.
+	After every successful build, the script reads this path,
+	gathers the build output into a mod folder, copies it to other mods,
+	and logs each step.
+
+5. Open **ProjectSynth.sln** file.
 
 ### Build
 
