@@ -47,6 +47,10 @@ to make you life a bit easier.
 
 5. Open **ProjectSynth.sln** file.
 
+	```sh
+	.\ProjectSynth.sln
+	```
+
 ### Build
 
 - **Ctrl + Shift + B** or go to navigation bar Build > Build Solution
