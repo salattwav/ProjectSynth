@@ -26,3 +26,4 @@ Skills
 ### Special (miku beam)
 
 - remove fixed angle on arming, it makes movement awkward.
+
