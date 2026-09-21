@@ -28,15 +28,5 @@ namespace ProjectSynth.States.Synth.Metro
         {
             return metro.GetOverdriveLevel();
         }
-
-        public void EnterCooldownState()
-        {
-            outer.SetNextState(new MetroCooldownState());
-        }
-
-        public void EnterMissedState()
-        {
-            outer.SetNextState(new MetroMissedState());
-        }
     }
 }
