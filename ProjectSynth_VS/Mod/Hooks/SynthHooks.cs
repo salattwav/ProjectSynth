@@ -1,4 +1,5 @@
 ﻿using ProjectSynth.Character.Synth.Content;
+using ProjectSynth.Components;
 using ProjectSynth.States;
 using R2API;
 using RoR2;
@@ -81,8 +82,13 @@ namespace ProjectSynth.Mod.Hooks
                 CharacterBody victim = report.victimBody;
                 CharacterBody attacker = report.attackerBody;
 
+                SynthMetroRuntime attackerMetro = attacker.GetComponent<SynthMetroRuntime>();
+                if (!attackerMetro) return;
+
+                Chat.AddMessage($"Overdrive: {(int)attackerMetro.GetOverdriveLevel()}");
+
                 int count = victim.GetBuffCount(SynthBuffs.Encore.buffIndex);
-                victim.SetBuffCount(SynthBuffs.Encore.buffIndex, count + SynthValues.EncoreInflictedStacksAmount);
+                victim.SetBuffCount(SynthBuffs.Encore.buffIndex, SynthValues.EncoreInflictedStacksAmount * (int)attackerMetro.GetOverdriveLevel());
                 EncoreRuntime.TryStartSequence(victim, attacker);
             }
             if (report.damageInfo.HasModdedDamageType(SynthDamageTypes.CultureShock))

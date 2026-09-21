@@ -103,18 +103,18 @@ namespace ProjectSynth.Components
 
             if (body == null || metro == null) return;
 
-            if (metro.ongoing && !animator.GetBool("Ongoing"))
+            if (metro.Ongoing && !animator.GetBool("Ongoing"))
             {
                 pendingOngoing = true;
             }
-            else if (!metro.ongoing)
+            else if (!metro.Ongoing)
             {
                 animator.SetBool("Ongoing", false);
                 pendingOngoing = false;
                 beatSynced = false;
             }
 
-            animator.SetFloat("SpeedMult", metro.speedMult);
+            animator.SetFloat("SpeedMult", metro.SpeedMult);
 
             SequenceLoopVisual();
 
@@ -136,7 +136,7 @@ namespace ProjectSynth.Components
 
         private void SequenceLoopVisual()
         {
-            float phase = metro.beatPhase01;
+            float phase = metro.BeatPhase01;
             bool beatJustWrapped = phase < lastPhase;
 
             if (pendingOngoing && beatJustWrapped)
@@ -175,7 +175,6 @@ namespace ProjectSynth.Components
             if (body == null)
             {
                 Log.Warning($"{nameof(SynthOverlayController)}: Target has no CharacterBody");
-                if (metro) metro.body = null;
                 return;
             }
 
@@ -185,8 +184,6 @@ namespace ProjectSynth.Components
                 metro = body.gameObject?.GetComponent<SynthMetroRuntime>();
                 if (!metro) metro = body.gameObject?.AddComponent<SynthMetroRuntime>();
             }
-
-            metro.body = body;
 
             animator.SetBool("Ongoing", false);
             animator.SetBool("Inside", false);

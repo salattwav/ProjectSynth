@@ -15,10 +15,19 @@ namespace ProjectSynth.States.Synth.Metro
             metro = gameObject.GetComponent<SynthMetroRuntime>();
         }
 
-        public bool IsInTimingWindow => metro != null && metro.timingWindowOpen;
+        public bool IsInTimingWindow => metro != null && metro.TimingWindowOpen;
 
-        // idk if grading will be used for anything
-        public MetroGrade Grade => metro != null ? metro.grade : MetroGrade.None;
+        public float OverdriveMeter => metro != null ? metro.OverdriveMeter : 0f;
+
+        public void IncreaseOverdriveMeter()
+        {
+            metro.IncreaseOverdriveMeter();
+        }
+
+        public OverdriveLevel GetOverdriveLevel()
+        {
+            return metro.GetOverdriveLevel();
+        }
 
         public void EnterCooldownState()
         {

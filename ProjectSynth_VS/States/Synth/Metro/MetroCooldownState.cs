@@ -6,17 +6,16 @@ namespace ProjectSynth.States.Synth.Metro
     {
         private readonly int CooldownBeats = SynthValues.MetroSuccessfulHitCooldownInBeats;
         private readonly float AnimEarlyOffsetBeats = 0.30f; // TODO: what even is that??
-        private int startBeatIndex;
+        private long startBeatIndex;
 
         public override void OnEnter()
         {
             base.OnEnter();
             IsOnCooldown = true;
 
-            metro.ongoing = true;
-            startBeatIndex = metro.beatIndex;
+            startBeatIndex = metro.BeatIndex;
 
-            float speed = (metro.speedMult > 0f) ? metro.speedMult : 2f;
+            float speed = (metro.SpeedMult > 0f) ? metro.SpeedMult : 2f;
             float animBeats = CooldownBeats + AnimEarlyOffsetBeats;
             metro.cooldownSpeedMult = speed / animBeats;
             metro.cooldownStartedThisFrame = true;
@@ -25,7 +24,7 @@ namespace ProjectSynth.States.Synth.Metro
         public override void Update()
         {
             base.Update();
-            if (metro.beatIndex - startBeatIndex >= CooldownBeats)
+            if (metro.BeatIndex - startBeatIndex >= CooldownBeats)
             {
                 outer.SetNextState(new MetroWaitForInputState());
             }

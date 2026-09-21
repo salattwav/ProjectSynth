@@ -9,7 +9,6 @@ namespace ProjectSynth.Modules.BaseContent.BaseStates.Metro
     {
         public virtual string MetroEsmName => "Metro";
         public virtual bool UseMetronome => true;
-        public bool IsMetronomeHit { get; private set; }
 
         public override void OnEnter()
         {
@@ -30,23 +29,20 @@ namespace ProjectSynth.Modules.BaseContent.BaseStates.Metro
             if (metroState.IsInTimingWindow)
             {
                 OnMetronomeHit(metroState);
-                metroState.EnterCooldownState();
             }
             else
             {
                 OnMetronomeMiss(metroState);
-                metroState.EnterMissedState();
             }
         }
 
-        public virtual void OnMetronomeHit(BaseMetroState metroState)
+        public virtual void OnMetronomeHit(BaseMetroState ms)
         {
-            IsMetronomeHit = true;
+            ms.IncreaseOverdriveMeter();
         }
 
-        public virtual void OnMetronomeMiss(BaseMetroState metroState)
+        public virtual void OnMetronomeMiss(BaseMetroState ms)
         {
-            IsMetronomeHit = false;
         }
     }
 }
