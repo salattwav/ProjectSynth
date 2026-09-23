@@ -26,9 +26,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#505050"
      inkscape:document-units="px"
-     inkscape:zoom="3.2261747"
-     inkscape:cx="90.819632"
-     inkscape:cy="-7.5941331"
+     inkscape:zoom="1.6130874"
+     inkscape:cx="97.328889"
+     inkscape:cy="111.89723"
      inkscape:window-width="1920"
      inkscape:window-height="1009"
      inkscape:window-x="-8"
@@ -136,6 +136,9 @@
     <path
        id="path6"
        style="display:inline;fill:#ffffff;stroke:none;stroke-width:2.24896;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:0.701681;paint-order:stroke markers fill"
-       d="M 16.800993,2.2486082 2.2489103,16.536366 16.800993,30.824383 31.353335,16.536366 Z m 0,0.474648 L 30.869902,16.536366 16.800993,30.349735 2.7323433,16.536366 Z" />
+       d="M 24.077039,2.2486082 2.2489103,23.680259 24.077039,45.112299 45.905556,23.680259 Z m 0,0.7119725 L 45.180406,23.680259 24.077039,44.400327 2.97406,23.680259 Z"
+       inkscape:export-filename="texSynthCrosshairSquare.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
   </g>
 </svg>

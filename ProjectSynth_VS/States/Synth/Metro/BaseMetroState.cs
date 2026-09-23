@@ -1,6 +1,9 @@
 ﻿using EntityStates;
+using ProjectSynth.Character.Synth.Content;
 using ProjectSynth.Components;
+using ProjectSynth.Mod;
 using RoR2;
+using UnityEngine;
 
 namespace ProjectSynth.States.Synth.Metro
 {
@@ -8,8 +11,10 @@ namespace ProjectSynth.States.Synth.Metro
     {
         public bool IsInSuccessWindow => _metro != null && _metro.SuccessWindowOpen;
         public float OverdriveMeter => _metro != null ? _metro.OverdriveMeter : 0f;
+        public Material overdriveOverlayMaterial = SynthAssets.mat_OverdriveOverlayEffectMaterial;
 
         protected SynthMetroRuntime _metro;
+        protected CharacterShaderOverlay shaderOverlay;
 
         private bool _windowHit;
         private bool _wasInWindow;
@@ -20,6 +25,12 @@ namespace ProjectSynth.States.Synth.Metro
         {
             base.OnEnter();
             _metro = gameObject.GetComponent<SynthMetroRuntime>();
+
+            shaderOverlay = characterBody.GetComponent<CharacterShaderOverlay>();
+            if (shaderOverlay == null)
+            {
+                Log.Warning("Shader overlay component not found on character.");
+            }
         }
 
         public override void Update()
@@ -48,6 +59,9 @@ namespace ProjectSynth.States.Synth.Metro
             _skippedBeatsCount = 0;
             _metro.IncreaseOverdriveMeter();
             _wasMeterReset = false;
+
+            shaderOverlay.SetIntensityFromValue(overdriveOverlayMaterial, OverdriveMeter, 0, 5, 0.5f);
+
             return true;
         }
 

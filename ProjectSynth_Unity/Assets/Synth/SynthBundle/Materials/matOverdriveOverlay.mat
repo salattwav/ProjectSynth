@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: matPumpedUpOverlayEffectMaterial
-  m_Shader: {fileID: 4800000, guid: 1a5c5984de458b8498f0a8a37f5f6292, type: 3}
+  m_Name: matOverdriveOverlay
+  m_Shader: {fileID: 4800000, guid: 646a2165e82703f4fa1b3ef58457627d, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -57,8 +57,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _PatternMask:
-        m_Texture: {fileID: 2800000, guid: 512428a348de4794fa0428dcfb52fc15, type: 3}
-        m_Scale: {x: 1, y: 2}
+        m_Texture: {fileID: 2800000, guid: dc57c47e20b45ba4fa4e246aa4d3edd7, type: 3}
+        m_Scale: {x: 0, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ScrollTexture:
         m_Texture: {fileID: 2800000, guid: bf9943d6a2abc474ab1c9bd5f8998c73, type: 3}
@@ -66,46 +66,43 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AccentColorIntensity: 1.6
-    - _BaseColorIntensity: 2.5
+    - _AccentColorIntensity: 2.1
+    - _BaseColorIntensity: 2
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EdgeDistanceX: 0.116
-    - _EdgeDistanceY: 0.181
-    - _EdgeWidth: 1.3
+    - _EdgeDistanceY: 0.212
+    - _EdgeWidth: 0.7
+    - _Falloff: 4
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _InnerRadius: 0.4
-    - _Intensity: 1
-    - _MaskIntensity: 0.438
-    - _MaskScrollSpeed: 30
+    - _Intensity: 0.1
+    - _MaskIntensity: 0.351
+    - _MaskScrollSpeed: 90
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _OuterEdgeDistanceX: -1
     - _OuterEdgeDistanceY: -1
-    - _OuterRadius: 1
     - _Parallax: 0.02
     - _PatternIntensity: 3
-    - _PulseSpeed: 5
-    - _RadiusX: 0.8
-    - _RadiusY: 0.45
-    - _ScrollSpeed: 25
+    - _PulseSpeed: 3.99
+    - _RadiusX: 0.75
+    - _RadiusY: 0.84
+    - _ScrollSpeed: 30
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _AccentColor: {r: 0.3529412, g: 0.7568628, b: 0.7019608, a: 1}
-    - _BackgroundColor: {r: 0, g: 0, b: 0, a: 1}
-    - _BaseColor: {r: 0.27450982, g: 0.5176471, b: 0.7294118, a: 1}
+    - _AccentColor: {r: 0.509434, g: 0.03604485, b: 0.21641651, a: 1}
+    - _BaseColor: {r: 1, g: 0.654902, b: 0.5058824, a: 1}
+    - _Center: {r: 0.5, g: 0.5, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GlowColor: {r: 1, g: 0.3, b: 0.8, a: 1}
-    - _MainColor: {r: 0.3529412, g: 0.7568628, b: 0.7019608, a: 0}
-    - _ScrollSpeed: {r: 1, g: 1, b: 0, a: 0}
+    - _MainColor: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []

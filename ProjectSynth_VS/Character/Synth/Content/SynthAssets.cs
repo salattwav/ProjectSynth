@@ -93,6 +93,7 @@ namespace ProjectSynth.Character.Synth.Content
         public static Material mat_TNMRound;
 
         public static Material mat_PumpedUpOverlayEffectMaterial;
+        public static Material mat_OverdriveOverlayEffectMaterial;
 
         public static void Init(AssetBundle assetBundle)
         {
@@ -194,6 +195,7 @@ namespace ProjectSynth.Character.Synth.Content
             mat_TNMRound = _ab.LoadAsset<Material>("matTNMRound").ConvertStubbedShaderToHopoo_OpaqueCloudRemap();
 
             mat_PumpedUpOverlayEffectMaterial = _ab.LoadAsset<Material>("matPumpedUpOverlayEffectMaterial");
+            mat_OverdriveOverlayEffectMaterial = _ab.LoadAsset<Material>("matOverdriveOverlay");
         }
 
         private static void CreateEffects()

@@ -1,4 +1,4 @@
-Shader "ProjectSynth/PumpedUpOverlayEffect"
+Shader "ProjectSynth/CircleGlowOverlayEffect"
 {
     Properties
     {
@@ -55,34 +55,17 @@ Shader "ProjectSynth/PumpedUpOverlayEffect"
 
             float3 computeScrollLayer(float2 uv)
             {
-                float stepX = step(0.5, uv.x);
-                float stepY = step(0.5, uv.y);
-
-                float maskBL = (1.0 - stepX) * (1.0 - stepY);
-                float maskBR = stepX * (1.0 - stepY);
-                float maskTL = (1.0 - stepX) * stepY;
-                float maskTR = stepX * stepY;
-
-                float2 localBL = uv * 2.0;
-                float2 localBR = float2(1.0 - (uv.x - 0.5) * 2.0, uv.y * 2.0);
-                float2 localTL = float2(uv.x * 2.0, 1.0 - (uv.y - 0.5) * 2.0);
-                float2 localTR = float2(1.0 - (uv.x - 0.5) * 2.0, 1.0 - (uv.y - 0.5) * 2.0);
+                // Fold the screen into one mirrored quadrant
+                float2 local = 1.0 - abs(1.0 - 2.0 * uv);
 
                 float2 scrollOffset = _Time.y * _ScrollSpeed * 0.01;
 
-                float2 sampleBL = TRANSFORM_TEX(frac(localBL - scrollOffset), _ScrollTexture);
-                float2 sampleBR = TRANSFORM_TEX(frac(localBR - scrollOffset), _ScrollTexture);
-                float2 sampleTL = TRANSFORM_TEX(frac(localTL - scrollOffset), _ScrollTexture);
-                float2 sampleTR = TRANSFORM_TEX(frac(localTR - scrollOffset), _ScrollTexture);
+                // No frac: Repeat wrap mode does the wrapping in the sampler
+                float2 sampleUV = TRANSFORM_TEX(local - scrollOffset, _ScrollTexture);
 
-                float4 texBL = tex2D(_ScrollTexture, sampleBL);
-                float4 texBR = tex2D(_ScrollTexture, sampleBR);
-                float4 texTL = tex2D(_ScrollTexture, sampleTL);
-                float4 texTR = tex2D(_ScrollTexture, sampleTR);
+                float4 scrollLayer = tex2D(_ScrollTexture, sampleUV);
 
-                float4 scrollLayer = texBL * maskBL + texBR * maskBR + texTL * maskTL + texTR * maskTR;
-
-                return _MainColor * (scrollLayer.a);
+                return _MainColor * scrollLayer.a;
             }
 
             float3 computePatternColor(float2 fragCoord)

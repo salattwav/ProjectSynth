@@ -16,6 +16,8 @@ namespace ProjectSynth.States.Synth.Metro
             float speed = (_metro.SpeedMult > 0f) ? _metro.SpeedMult : 2f;
             _metro.cooldownSpeedMult = speed / _cooldownTime;
             _metro.cooldownStartedThisFrame = true;
+
+            shaderOverlay.SetActive(overdriveOverlayMaterial, false, _cooldownTime);
         }
 
         public override void FixedUpdate()
