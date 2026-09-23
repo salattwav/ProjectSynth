@@ -34,7 +34,7 @@ namespace ProjectSynth.Character.Synth.Content
         // UI
         public static GameObject synthCrosshair; // TODO:
         public static GameObject synthMetroOverlay; // TODO:
-        public static GameObject synthRushOverlay; // TODO:
+        public static GameObject synthAnotherOverlay; // TODO:
         public static GameObject divaIndicator;
         public static GameObject divaIndicatorFocused;
 
@@ -118,7 +118,7 @@ namespace ProjectSynth.Character.Synth.Content
             synthMetroOverlay = _ab.LoadAsset<GameObject>("MetroOverlay");
             synthMetroOverlay.AddComponent<SynthOverlayController>();
 
-            synthRushOverlay = _ab.LoadAsset<GameObject>("RushOverlay");
+            synthAnotherOverlay = _ab.LoadAsset<GameObject>("AnotherOverlay");
         }
 
         private static void RegisterTextures()
