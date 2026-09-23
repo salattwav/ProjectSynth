@@ -24,25 +24,15 @@ namespace ProjectSynth.Modules.BaseContent.BaseStates.Metro
             var esm = EntityStateMachine.FindByCustomName(characterBody.gameObject, MetroEsmName);
             if (!esm) return;
 
-            if (esm.state is not BaseMetroState metroState) return;
+            if (esm.state is not MetroWaitForInputState readyState) return;
 
-            if (metroState.IsInTimingWindow)
-            {
-                OnMetronomeHit(metroState);
-            }
-            else
-            {
-                OnMetronomeMiss(metroState);
-            }
+            bool hit = readyState.RegisterHit();
+
+            if (hit) OnMetronomeHit(readyState);
+            else OnMetronomeMiss(readyState);
         }
 
-        public virtual void OnMetronomeHit(BaseMetroState ms)
-        {
-            ms.IncreaseOverdriveMeter();
-        }
-
-        public virtual void OnMetronomeMiss(BaseMetroState ms)
-        {
-        }
+        public virtual void OnMetronomeHit(BaseMetroState metroState) { }
+        public virtual void OnMetronomeMiss(BaseMetroState metroState) { }
     }
 }

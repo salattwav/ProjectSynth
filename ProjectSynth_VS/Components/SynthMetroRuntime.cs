@@ -1,4 +1,5 @@
 ﻿using ProjectSynth.Character.Synth.Content;
+using RoR2;
 using SYNClib.API;
 using UnityEngine;
 
@@ -19,7 +20,7 @@ namespace ProjectSynth.Components
         public float SpeedMult { get; private set; } = 1f;
         public long BeatIndex { get; private set; }
         public float BeatPhase01 { get; private set; }
-        public bool TimingWindowOpen { get; private set; }
+        public bool SuccessWindowOpen { get; private set; }
         public float OverdriveMeter { get; private set; }
         public bool Ongoing { get; private set; }
 
@@ -30,7 +31,7 @@ namespace ProjectSynth.Components
         private double _lastBeatTime = -1.0;
         private OverdriveLevel _level;
         private double _addToMeter;
-        private int _overdriveMaxLevel = 5;
+        private readonly int _overdriveMaxLevel = 5;
 
 
         private void Awake()
@@ -62,7 +63,7 @@ namespace ProjectSynth.Components
 
         private void ComputePhaseAndWindow()
         {
-            TimingWindowOpen = false;
+            SuccessWindowOpen = false;
 
             double interval = Sync.BeatInterval;
 
@@ -84,7 +85,7 @@ namespace ProjectSynth.Components
 
             if (distanceFromBeat <= successWindow)
             {
-                TimingWindowOpen = true;
+                SuccessWindowOpen = true;
             }
 
             SpeedMult = (float)(1.0 / interval);
@@ -100,7 +101,7 @@ namespace ProjectSynth.Components
             BeatIndex = 0L;
 
             BeatPhase01 = 0f;
-            TimingWindowOpen = false;
+            SuccessWindowOpen = false;
             _level = 0;
 
             ResetOverdriveMeter();

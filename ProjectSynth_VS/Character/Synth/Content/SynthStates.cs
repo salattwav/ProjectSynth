@@ -33,6 +33,7 @@ namespace ProjectSynth.Character.Synth.Content
 
             // Metro
             ContentAddition.AddEntityState(typeof(MetroWaitForInputState), out _);
+            ContentAddition.AddEntityState(typeof(MetroCooldownState), out _);
 
             // Effects
             ContentAddition.AddEntityState(typeof(CultureShockState), out _);

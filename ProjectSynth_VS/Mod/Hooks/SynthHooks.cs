@@ -85,8 +85,6 @@ namespace ProjectSynth.Mod.Hooks
                 SynthMetroRuntime attackerMetro = attacker.GetComponent<SynthMetroRuntime>();
                 if (!attackerMetro) return;
 
-                Chat.AddMessage($"Overdrive: {(int)attackerMetro.GetOverdriveLevel()}");
-
                 int count = victim.GetBuffCount(SynthBuffs.Encore.buffIndex);
                 victim.SetBuffCount(SynthBuffs.Encore.buffIndex, SynthValues.EncoreInflictedStacksAmount * (int)attackerMetro.GetOverdriveLevel());
                 EncoreRuntime.TryStartSequence(victim, attacker);
