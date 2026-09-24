@@ -31,7 +31,6 @@ namespace ProjectSynth.Character.Synth.Content
         public static ConfigEntry<float> thirtyNineMusicBloom;
         public static ConfigEntry<float> thirtyNineMusicRecoilAmplitude;
 
-        public static ConfigEntry<float> metroCooldownOverdriveInfluenceCoefficient;
         public static ConfigEntry<float> metroSuccessWindowBPMInfluenceCoefficient;
         public static ConfigEntry<float> metroOverdriveGrowthCoefficient;
 
@@ -133,9 +132,6 @@ namespace ProjectSynth.Character.Synth.Content
 
             #region Metro Section
             string metroSection = "Metronome (M1K-U)";
-
-            string metroCooldownOverdriveInfluenceCoefficientDescription = "How much does the overdrive level increase the cooldown duration.";
-            metroCooldownOverdriveInfluenceCoefficient = Config.BindAndReasignPassedValueOnChange(metroSection, "Overdrive Influence Coefficient on Metro Cooldown", metroCooldownOverdriveInfluenceCoefficientDescription, SynthValues.MetroCooldownOverdriveInfluenceCoefficient, v => SynthValues.MetroCooldownOverdriveInfluenceCoefficient = v);
 
             string metroSuccessWindowBPMInfluenceCoefficientDescription = $"!!!IMPORTANT!!! {Environment.NewLine}This value is originally of 'double' type, but config only supports float, so be aware of this! {Environment.NewLine}{Environment.NewLine}Success window scales with BPM: more BPM = more time to hit a success window. This value is how much of BPM value is actually influencing the success window size. The product of BPM value and this value is hom much time before and after the actual beat is considered a success window.";
             metroSuccessWindowBPMInfluenceCoefficient = Config.BindAndReasignPassedValueOnChange(metroSection, "BPM Influence Coefficient on Success Window Size", metroSuccessWindowBPMInfluenceCoefficientDescription, (float)SynthValues.MetroSuccessWindowBPMInfluenceCoefficient, v => SynthValues.MetroSuccessWindowBPMInfluenceCoefficient = v);
