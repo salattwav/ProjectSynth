@@ -34,7 +34,7 @@ namespace ProjectSynth.Character.Synth.Content
         // UI
         public static GameObject synthCrosshair; // TODO:
         public static GameObject synthMetroOverlay; // TODO:
-        public static GameObject synthRushOverlay; // TODO:
+        public static GameObject synthAnotherOverlay; // TODO:
         public static GameObject divaIndicator;
         public static GameObject divaIndicatorFocused;
 
@@ -93,6 +93,7 @@ namespace ProjectSynth.Character.Synth.Content
         public static Material mat_TNMRound;
 
         public static Material mat_PumpedUpOverlayEffectMaterial;
+        public static Material mat_OverdriveOverlayEffectMaterial;
 
         public static void Init(AssetBundle assetBundle)
         {
@@ -118,7 +119,7 @@ namespace ProjectSynth.Character.Synth.Content
             synthMetroOverlay = _ab.LoadAsset<GameObject>("MetroOverlay");
             synthMetroOverlay.AddComponent<SynthOverlayController>();
 
-            synthRushOverlay = _ab.LoadAsset<GameObject>("RushOverlay");
+            synthAnotherOverlay = _ab.LoadAsset<GameObject>("AnotherOverlay");
         }
 
         private static void RegisterTextures()
@@ -194,6 +195,7 @@ namespace ProjectSynth.Character.Synth.Content
             mat_TNMRound = _ab.LoadAsset<Material>("matTNMRound").ConvertStubbedShaderToHopoo_OpaqueCloudRemap();
 
             mat_PumpedUpOverlayEffectMaterial = _ab.LoadAsset<Material>("matPumpedUpOverlayEffectMaterial");
+            mat_OverdriveOverlayEffectMaterial = _ab.LoadAsset<Material>("matOverdriveOverlay");
         }
 
         private static void CreateEffects()

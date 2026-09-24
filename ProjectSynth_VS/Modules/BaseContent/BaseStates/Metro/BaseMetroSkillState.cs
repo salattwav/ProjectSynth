@@ -9,7 +9,6 @@ namespace ProjectSynth.Modules.BaseContent.BaseStates.Metro
     {
         public virtual string MetroEsmName => "Metro";
         public virtual bool UseMetronome => true;
-        public bool IsMetronomeHit { get; private set; }
 
         public override void OnEnter()
         {
@@ -25,28 +24,15 @@ namespace ProjectSynth.Modules.BaseContent.BaseStates.Metro
             var esm = EntityStateMachine.FindByCustomName(characterBody.gameObject, MetroEsmName);
             if (!esm) return;
 
-            if (esm.state is not BaseMetroState metroState) return;
+            if (esm.state is not MetroWaitForInputState readyState) return;
 
-            if (metroState.IsInTimingWindow)
-            {
-                OnMetronomeHit(metroState);
-                metroState.EnterCooldownState();
-            }
-            else
-            {
-                OnMetronomeMiss(metroState);
-                metroState.EnterMissedState();
-            }
+            bool hit = readyState.RegisterHit();
+
+            if (hit) OnMetronomeHit(readyState);
+            else OnMetronomeMiss(readyState);
         }
 
-        public virtual void OnMetronomeHit(BaseMetroState metroState)
-        {
-            IsMetronomeHit = true;
-        }
-
-        public virtual void OnMetronomeMiss(BaseMetroState metroState)
-        {
-            IsMetronomeHit = false;
-        }
+        public virtual void OnMetronomeHit(BaseMetroState metroState) { }
+        public virtual void OnMetronomeMiss(BaseMetroState metroState) { }
     }
 }

@@ -8,73 +8,22 @@ namespace ProjectSynth.Components
 {
     public class SynthOverlayController : MonoBehaviour
     {
-        RectTransform window;
-        RectTransform onBeatIndicator;
-
-        Transform chargesRoot;
-        Transform[] charge;
-
-        Image timer;
-        Sprite sprintTimer;
-        Sprite defaultTimer;
-
-        Image walkCrosshair;
-        RawImage sprintCrosshair;
-
-        Animator animator;
-        Canvas canvas;
-
-        bool initialized;
-
-        GameObject currentBodyObject;
-        CharacterBody body;
-
-        SynthMetroRuntime metro;
-
-        HUD hud;
-
+        private Animator animator;
+        private bool initialized;
+        private GameObject currentBodyObject;
+        private CharacterBody body;
+        private HUD hud;
         private float lastPhase;
-        private bool beatSynced;
         private bool pendingOngoing;
+        
+        protected SynthMetroRuntime metro;
 
         private void Awake()
         {
             initialized = false;
 
             hud = GetComponentInParent<HUD>();
-            canvas = hud.mainContainer?.GetComponentInParent<Canvas>();
             animator = GetComponent<Animator>();
-
-            window = transform.Find("Window, L")?.GetComponent<RectTransform>();
-            onBeatIndicator = transform.Find("Bracket, L/OnBeat, L")?.GetComponent<RectTransform>();
-
-            timer = transform.Find("Timer")?.GetComponent<Image>();
-            chargesRoot = transform.Find("Charges");
-
-            walkCrosshair = transform.Find("Center, Walk")?.GetComponent<Image>();
-            sprintCrosshair = transform.Find("Center, Sprint")?.GetComponent<RawImage>();
-
-            defaultTimer = timer ? timer.sprite : null;
-            sprintTimer = transform.Find("Timer/Sprint")?.GetComponent<Image>()?.sprite;
-
-            if (!chargesRoot)
-            {
-                Log.Error($"{nameof(SynthOverlayController)}: Charges root missing");
-                enabled = false;
-                return;
-            }
-
-            int chargeCount = chargesRoot.childCount;
-            if (chargeCount <= 0)
-            {
-                Log.Error($"{nameof(SynthOverlayController)}: Charges root has no children");
-                enabled = false;
-                return;
-            }
-
-            charge = new Transform[chargeCount];
-            for (int i = 0; i < chargeCount; i++)
-                charge[i] = chargesRoot.GetChild(i);
 
             initialized = true;
         }
@@ -91,8 +40,6 @@ namespace ProjectSynth.Components
             {
                 metro.cooldownStartedThisFrame = false;
             }
-
-            beatSynced = false;
         }
 
         private void Update()
@@ -103,18 +50,17 @@ namespace ProjectSynth.Components
 
             if (body == null || metro == null) return;
 
-            if (metro.ongoing && !animator.GetBool("Ongoing"))
+            if (metro.Ongoing && !animator.GetBool("Ongoing"))
             {
                 pendingOngoing = true;
             }
-            else if (!metro.ongoing)
+            else if (!metro.Ongoing)
             {
                 animator.SetBool("Ongoing", false);
                 pendingOngoing = false;
-                beatSynced = false;
             }
 
-            animator.SetFloat("SpeedMult", metro.speedMult);
+            animator.SetFloat("SpeedMult", metro.SpeedMult);
 
             SequenceLoopVisual();
 
@@ -136,7 +82,7 @@ namespace ProjectSynth.Components
 
         private void SequenceLoopVisual()
         {
-            float phase = metro.beatPhase01;
+            float phase = metro.BeatPhase01;
             bool beatJustWrapped = phase < lastPhase;
 
             if (pendingOngoing && beatJustWrapped)
@@ -158,9 +104,9 @@ namespace ProjectSynth.Components
 
         private void TriggerBeatAnimations(float phase)
         {
-            animator.Play("animSynthCrosshairSquarePulse", 6, 0f);
+            animator.Play("animSynthCrosshairSquarePulse", 5, 0f);
             animator.Play("animSynthCrosshairIndicatorOnBeatMove", 1, 0f);
-            animator.Play("animSynthCrosshairIndicatorOnBeatEnd", 7, 0f);
+            animator.Play("animSynthCrosshairIndicatorOnBeatEnd", 6, 0f);
         }
 
         private void ResolveTarget()
@@ -175,7 +121,6 @@ namespace ProjectSynth.Components
             if (body == null)
             {
                 Log.Warning($"{nameof(SynthOverlayController)}: Target has no CharacterBody");
-                if (metro) metro.body = null;
                 return;
             }
 
@@ -186,12 +131,8 @@ namespace ProjectSynth.Components
                 if (!metro) metro = body.gameObject?.AddComponent<SynthMetroRuntime>();
             }
 
-            metro.body = body;
-
             animator.SetBool("Ongoing", false);
             animator.SetBool("Inside", false);
-
-            beatSynced = false;
         }
     }
 }

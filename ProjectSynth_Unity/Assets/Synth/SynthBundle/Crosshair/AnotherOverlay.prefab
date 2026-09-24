@@ -99,7 +99,7 @@ GameObject:
   m_Component:
   - component: {fileID: 653965124309907669}
   m_Layer: 5
-  m_Name: RushOverlay
+  m_Name: AnotherOverlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

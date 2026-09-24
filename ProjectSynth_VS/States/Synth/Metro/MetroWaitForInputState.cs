@@ -2,15 +2,6 @@
 {
     public sealed class MetroWaitForInputState : BaseMetroState
     {
-        public override void OnEnter()
-        {
-            base.OnEnter();
-            IsOnCooldown = false;
-        }
 
-        public override void Update()
-        {
-            base.Update();
-        }
     }
 }

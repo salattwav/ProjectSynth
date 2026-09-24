@@ -49,10 +49,9 @@ namespace ProjectSynth.States.Synth.PumpedUp
             }
             else
             {
-                shaderOverlay.effectMaterial = overlayEffectMaterial;
+                shaderOverlay.SetActive(overlayEffectMaterial, true, lerpDuration / 2f);
             }
 
-            shaderOverlay.SetActive(true, lerpDuration / 2f);
         }
 
         public override void Update()
@@ -83,7 +82,7 @@ namespace ProjectSynth.States.Synth.PumpedUp
             }
 
             cameraOverride?.RemoveModifier(fovHandle, lerpDuration, CharacterCameraOverride.EaseInOut);
-            shaderOverlay?.SetActive(false, lerpDuration / 2f);
+            shaderOverlay?.SetActive(overlayEffectMaterial, false, lerpDuration / 2f);
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

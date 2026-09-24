@@ -1,32 +1,33 @@
 ﻿using ProjectSynth.Character.Synth.Content;
+using RoR2;
 
 namespace ProjectSynth.States.Synth.Metro
 {
-    public sealed class MetroCooldownState : BaseMetroState
+    public sealed class MetroCooldownState(float overdiveMeterValue) : BaseMetroState
     {
-        private readonly int CooldownBeats = SynthValues.MetroSuccessfulHitCooldownInBeats;
-        private readonly float AnimEarlyOffsetBeats = 0.30f; // TODO: what even is that??
-        private int startBeatIndex;
+        private readonly int _cooldownBeats = (int)overdiveMeterValue;
+        private long enterBeatIndex;
 
         public override void OnEnter()
         {
             base.OnEnter();
-            IsOnCooldown = true;
+            enterBeatIndex = _metro.BeatIndex;
 
-            metro.ongoing = true;
-            startBeatIndex = metro.beatIndex;
+            float speed = (_metro.SpeedMult > 0f) ? _metro.SpeedMult : 2f;
+            float cooldownSpeedMult = speed / _cooldownBeats;
 
-            float speed = (metro.speedMult > 0f) ? metro.speedMult : 2f;
-            float animBeats = CooldownBeats + AnimEarlyOffsetBeats;
-            metro.cooldownSpeedMult = speed / animBeats;
-            metro.cooldownStartedThisFrame = true;
+            _metro.cooldownSpeedMult = cooldownSpeedMult;
+            _metro.cooldownStartedThisFrame = true;
+
+            shaderOverlay.SetActive(overdriveOverlayMaterial, false, cooldownSpeedMult);
         }
 
         public override void Update()
         {
             base.Update();
-            if (metro.beatIndex - startBeatIndex >= CooldownBeats)
+            if (_metro.BeatIndex - enterBeatIndex >= _cooldownBeats)
             {
+                Chat.AddMessage("entering next state...");
                 outer.SetNextState(new MetroWaitForInputState());
             }
         }

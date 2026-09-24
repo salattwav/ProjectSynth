@@ -74,7 +74,7 @@ namespace ProjectSynth.Components
             var body = GetComponent<CharacterBody>();
             bool hasMetro = SynthPassive.IsMetro(body);
             Log.Info($"Overlay decided! Has metronome: {hasMetro}");
-            return hasMetro ? SynthAssets.synthMetroOverlay : SynthAssets.synthRushOverlay;
+            return hasMetro ? SynthAssets.synthMetroOverlay : SynthAssets.synthAnotherOverlay;
         }
     }
 }

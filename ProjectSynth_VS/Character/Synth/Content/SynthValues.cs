@@ -30,7 +30,8 @@
         public static float ThirtyNineMusicRecoilAmplitude { get; set; } = 1.1f;
 
         // Metro numbers
-        public static int MetroSuccessfulHitCooldownInBeats { get; set; } = 4;
+        public static double MetroSuccessWindowBPMInfluenceCoefficient { get; set; } = 0.0015d;
+        public static float MetroOverdriveGrowthCoefficient { get; set; } = 5.0f;
 
         // WeakEnd numbers
         public static float WeakEndDamageMultiplier { get; set; } = 1.25f;
