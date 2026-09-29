@@ -1,0 +1,28 @@
+Model
+=====
+
+- looks pretty messed up on super low setting, figure out what do to with this.
+
+Skills
+======
+
+### Passive (M1K-U)
+- consider adding combo mechanic instead of successful hit cooldown.
+- feels unintuitive, might need more elements that help keep up with the rhythm.
+- make better transitions from song to song.
+- add more ui elements (like combo meter or else).
+
+### Primary (tnm)
+- consider switching it from projectile to hitscan.
+
+### Secondary (diva)
+- kinda useless against flying enemies. iterate on skill design.
+
+### Utility (rolling girl)
+- make zoom out less awkward.
+- add a lot more visual fx.
+- add more control to wether to send enemies flying, or keep them in place on skill end.
+
+### Special (miku beam)
+
+- remove fixed angle on arming, it makes movement awkward.
