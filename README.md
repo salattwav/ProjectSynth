@@ -23,10 +23,16 @@ to make your life a bit easier.
 	git clone https://github.com/salattwav/ProjectSynth.git
 	```
 
-3. Navigate to **ProjectSynth_VS** folder:
+2. Navigate to **ProjectSynth_VS** folder:
 
 	```sh
 	cd ProjectSynth\ProjectSynth_VS
+	```
+
+3. Open **ProjectSynth.sln** file.
+
+	```sh
+	.\ProjectSynth.sln
 	```
 
 4. Create a `Directory.Build.props` file.
@@ -45,12 +51,6 @@ to make your life a bit easier.
 	It should look something like this:	
 
 	`D:\[YOUR_R2MODMAN_FOLDER]\r2profiles\RiskOfRain2\profiles\[YOUR_PROFILE_NAME]\BepInEx\plugins`
-
-5. Open **ProjectSynth.sln** file.
-
-	```sh
-	.\ProjectSynth.sln
-	```
 
 ### Build
 
