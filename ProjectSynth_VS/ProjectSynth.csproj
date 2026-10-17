@@ -50,6 +50,6 @@
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-		<Exec Command="call PostBuild.bat $(TargetPath)" WorkingDirectory="$(ProjectDir)" />
+		<Exec Command="call PostBuild.bat $(TargetPath) $(ModsDir)" WorkingDirectory="$(ProjectDir)" />
 	</Target>
 </Project>

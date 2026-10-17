@@ -29,22 +29,22 @@ to make your life a bit easier.
 	cd ProjectSynth\ProjectSynth_VS
 	```
 
-4. Create a `deploy_path.txt` file.
-
-	Find a path to your mods. It should look something like this:	
-
-	`D:\[YOUR_R2MODMAN_FOLDER]\r2profiles\RiskOfRain2\profiles\[YOUR_PROFILE_NAME]\BepInEx\plugins`
-		
-	Replace `[PATH_TO_YOUR_MODS_FOLDER]` below with your path and run it:
+4. Create a `Directory.Build.props` file.
 
 	```sh
-	echo "[PATH_TO_YOUR_MODS_FOLDER]" > .\deploy_path.txt
-	```	
+	dotnet new buildprops
+	```
 
-	`deploy_path.txt` tells `PostBuild.bat` where to paste final build.
-	After every successful build, the script reads this path,
-	gathers the build output into a mod folder, copies it to other mods,
-	and logs each step.
+5. Paste this inside `<PropertyGroup>`:
+
+	```xml
+	<ModsDir>[PATH_TO_YOUR_MODS_FOLDER]</ModsDir>
+	```
+
+	Replace `[PATH_TO_YOUR_MODS_FOLDER]` with your path to the mods folder.
+	It should look something like this:	
+
+	`D:\[YOUR_R2MODMAN_FOLDER]\r2profiles\RiskOfRain2\profiles\[YOUR_PROFILE_NAME]\BepInEx\plugins`
 
 5. Open **ProjectSynth.sln** file.
 

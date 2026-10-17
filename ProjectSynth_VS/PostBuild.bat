@@ -1,13 +1,7 @@
 @echo on
 
 set "TargetPath=%~1"
-set "ConfigFile=deploy_path.txt"
-if not exist "%ConfigFile%" (
-    echo ERROR: %ConfigFile% not found.
-    exit /b 1
-)
-
-for /f "usebackq delims=" %%A in ("%ConfigFile%") do set "DeployPath=%%A"
+set "DeployPath=%~2"
 
 copy "%TargetPath%" "..\Build\plugins"
 if %ERRORLEVEL% EQU 0 (echo COPY DLL: successful) else (echo COPY DLL: failed)
