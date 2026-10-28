@@ -28,7 +28,7 @@ namespace ProjectSynth.Character.Synth.Content
                 + "Pop pipop pipop pop pip poo\r\nPop pipop pipop pop pip poo\r\nPop pipop pipop pop pip poo\r\nPop pipop pipop pop pip poo";
 
             string outro = "..the world is hers or whatever.";
-            string outroFailure = "..sadly, she was replaced by AI.";
+            string outroFailure = "..sadly, she was replaced by HatSUNO Miku.";
 
             string lore = "later to be added...";
 
