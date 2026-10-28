@@ -295,20 +295,13 @@ namespace ProjectSynth.Character.Synth.Content
             proj_Diva.DestroyChild("WeakIndicator");
             proj_Diva.DestroyChild("StrongIndicator");
 
-            foreach (var comp in proj_Diva.GetComponents<MonoBehaviour>())
-            {
-                if (comp is ProjectileDeployToOwner
-                    || comp is ProjectileStickOnImpact
-                    || comp is EntityStateMachine
-                    )
-                {
-                    UnityEngine.Object.DestroyImmediate(comp);
-                }
-            }
-            // Deleting it explicitly here, because it is higher on the list of components than ProjectileDeployToOwner.
-            // But the requirement for deleting Deployable is to delete ProjectileDeployToOwner first.
-            // This is easiest way to ensure that the order of deletion is correct.
+            UnityEngine.Object.DestroyImmediate(proj_Diva.GetComponent<ProjectileDeployToOwner>());
             UnityEngine.Object.DestroyImmediate(proj_Diva.GetComponent<Deployable>());
+            UnityEngine.Object.DestroyImmediate(proj_Diva.GetComponent<ProjectileStickOnImpact>());
+            foreach (var comp in proj_Diva.GetComponents<EntityStateMachine>())
+            {
+                UnityEngine.Object.DestroyImmediate(comp);
+            }
 
             var divaVisuals = _ab.LoadAsset<GameObject>("DivaVisuals").InstantiateClone("DivaVisuals", true);
             Transform diva_sphere = divaVisuals.transform.Find("Hologram/Sphere");
