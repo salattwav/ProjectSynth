@@ -19,7 +19,6 @@ namespace ProjectSynth.Modules.BaseContent.BaseStates.Metro
         private void TryHandleMetronomeWindow()
         {
             if (!UseMetronome || !characterBody) return;
-            if (!SynthPassive.IsMetro(characterBody)) return;
 
             var esm = EntityStateMachine.FindByCustomName(characterBody.gameObject, MetroEsmName);
             if (!esm) return;

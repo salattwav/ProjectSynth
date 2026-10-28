@@ -9,7 +9,7 @@ namespace ProjectSynth.Components
 {
     public class SynthSurvivorController : MonoBehaviour
     {
-        public GameObject overlayPrefab;
+        public GameObject OverlayPrefab = SynthAssets.ui_synthMetroOverlay;
         public string childLocatorEntry = "CrosshairExtras";
 
         private OverlayController overlayController;
@@ -20,8 +20,15 @@ namespace ProjectSynth.Components
 
         void OnEnable()
         {
-            Log.Info("Waiting 1 frame before deciding overlay...");
-            StartCoroutine(EnsureOverlay());
+            OverlayCreationParams overlayParams = new()
+            {
+                prefab = OverlayPrefab,
+                childLocatorEntry = childLocatorEntry
+            };
+
+            overlayController = HudOverlayManager.AddOverlay(gameObject, overlayParams);
+            //overlayController.onInstanceAdded += OnOverlayInstanceAdded;
+            //overlayController.onInstanceRemove += OnOverlayInstanceRemoved;
 
             characterBody = gameObject.GetComponent<CharacterBody>();
             bodyStateMachine = EntityStateMachine.FindByCustomName(gameObject, "Body");
@@ -43,22 +50,6 @@ namespace ProjectSynth.Components
         {
         }
 
-        IEnumerator EnsureOverlay()
-        {
-            yield return null;
-
-            overlayPrefab = DeciedeOverlay();
-
-            OverlayCreationParams overlayParams = new()
-            {
-                prefab = overlayPrefab,
-                childLocatorEntry = childLocatorEntry
-            };
-            overlayController = HudOverlayManager.AddOverlay(gameObject, overlayParams);
-            //overlayController.onInstanceAdded += OnOverlayInstanceAdded;
-            //overlayController.onInstanceRemove += OnOverlayInstanceRemoved;
-        }
-
         private void OnOverlayInstanceAdded(OverlayController controller, GameObject instance)
         {
 
@@ -67,14 +58,6 @@ namespace ProjectSynth.Components
         private void OnOverlayInstanceRemoved(OverlayController controller, GameObject instance)
         {
 
-        }
-
-        private GameObject DeciedeOverlay()
-        {
-            var body = GetComponent<CharacterBody>();
-            bool hasMetro = SynthPassive.IsMetro(body);
-            Log.Info($"Overlay decided! Has metronome: {hasMetro}");
-            return hasMetro ? SynthAssets.ui_synthMetroOverlay : SynthAssets.ui_synthAnotherOverlay;
         }
     }
 }

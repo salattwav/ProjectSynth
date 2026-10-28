@@ -132,8 +132,7 @@ namespace ProjectSynth.Character.Synth
             GenericSkill passiveGenericSkill = Skills.CreateGenericSkillWithSkillFamily(bodyPrefab, "Passive");
 
             PassiveItemSkillDef metro = SynthSkillDefs.Passive_Metro();
-            PassiveItemSkillDef another = SynthSkillDefs.Passive_Another();
-            Skills.AddSkillsToFamily(passiveGenericSkill.skillFamily, metro, another);
+            Skills.AddSkillsToFamily(passiveGenericSkill.skillFamily, metro);
         }
 
         private void AddPrimarySkills()

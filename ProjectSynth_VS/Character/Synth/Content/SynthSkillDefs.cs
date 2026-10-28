@@ -56,50 +56,7 @@ namespace ProjectSynth.Character.Synth.Content
             ContentAddition.AddSkillDef(metro);
             return metro;
         }
-        public static PassiveItemSkillDef Passive_Another()
-        {
-            PassiveItemSkillDef another = Skills.CreateSkillDef(new PassiveItemSkillDefInfo
-            {
-                skillName = "M1K-U v2.0",
-                skillNameToken = Prefix + "PASSIVE_ANOTHER_NAME",
-                skillDescriptionToken = Prefix + "PASSIVE_ANOTHER_DESCRIPTION",
-                icon = SynthAssets.icon_Metro,
 
-                activationStateMachineName = "Weapon",
-                activationState = new SerializableEntityStateType(typeof(SynthMain)),
-                interruptPriority = InterruptPriority.Any,
-
-                baseRechargeInterval = 0,
-                baseMaxStock = 0,
-                rechargeStock = 0,
-                requiredStock = 0,
-                stockToConsume = 0,
-
-                attackSpeedBuffsRestockSpeed = false,
-                attackSpeedBuffsRestockSpeed_Multiplier = 1,
-
-                resetCooldownTimerOnUse = false,
-                fullRestockOnAssign = false,
-                dontAllowPastMaxStocks = false,
-                beginSkillCooldownOnSkillEnd = false,
-                isCooldownBlockedUntilManuallyReset = false,
-
-                cancelSprintingOnActivation = false,
-                forceSprintDuringState = false,
-                canceledFromSprinting = false,
-
-                isCombatSkill = false,
-                mustKeyPress = false,
-                triggeredByPressRelease = false,
-                autoHandleLuminousShot = true,
-                suppressSkillActivation = false,
-                hideStockCount = false,
-                hideCooldown = false,
-                passiveItem = SynthPassive.AnotherPassiveItem
-            });
-            ContentAddition.AddSkillDef(another);
-            return another;
-        }
         public static SkillDef Primary_ThirtyNineMusic()
         {
             SkillDef tnm = Skills.CreateSkillDef(new SkillDefInfo
