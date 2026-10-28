@@ -11,38 +11,6 @@ namespace ProjectSynth.Modules
     internal static class Skills
     {
         #region genericskills
-        public static void CreateSkillFamilies(GameObject targetPrefab) => CreateSkillFamilies(targetPrefab, SkillSlot.Primary, SkillSlot.Secondary, SkillSlot.Utility, SkillSlot.Special);
-        /// <summary>
-        /// Create in order the GenericSkills for the skillslots desired, and create skillfamilies for them.
-        /// </summary>
-        /// <param name="targetPrefab">Body prefab to add GenericSkills</param>
-        /// <param name="slots">Order of slots to add to the body prefab.</param>
-        public static void CreateSkillFamilies(GameObject targetPrefab, params SkillSlot[] slots)
-        {
-            SkillLocator skillLocator = targetPrefab.GetComponent<SkillLocator>();
-
-            for (int i = 0; i < slots.Length; i++)
-            {
-                switch (slots[i])
-                {
-                    case SkillSlot.Primary:
-                        skillLocator.primary = CreateGenericSkillWithSkillFamily(targetPrefab, "Primary");
-                        break;
-                    case SkillSlot.Secondary:
-                        skillLocator.secondary = CreateGenericSkillWithSkillFamily(targetPrefab, "Secondary");
-                        break;
-                    case SkillSlot.Utility:
-                        skillLocator.utility = CreateGenericSkillWithSkillFamily(targetPrefab, "Utility");
-                        break;
-                    case SkillSlot.Special:
-                        skillLocator.special = CreateGenericSkillWithSkillFamily(targetPrefab, "Special");
-                        break;
-                    case SkillSlot.None:
-                        break;
-                }
-            }
-        }
-
         public static void ClearGenericSkills(GameObject targetPrefab)
         {
             foreach (GenericSkill obj in targetPrefab.GetComponentsInChildren<GenericSkill>())
@@ -91,7 +59,6 @@ namespace ProjectSynth.Modules
         #endregion
 
         #region skillfamilies
-
         //everything calls this
         public static void AddSkillToFamily(SkillFamily skillFamily, SkillDef skillDef, UnlockableDef unlockableDef = null)
         {
@@ -212,7 +179,7 @@ namespace ProjectSynth.Modules
                 var passiveItemSkillDef = skillDef as PassiveItemSkillDef;
                 passiveItemSkillDef.passiveItem = passiveItemSkillDefInfo.passiveItem;
             }
-            else if (skillDefInfo is SteppedSkillDefInfo steppedSkillDefInfo)
+            if (skillDefInfo is SteppedSkillDefInfo steppedSkillDefInfo)
             {
                 var steppedSkillDef = skillDef as SteppedSkillDef;
                 steppedSkillDef.stepCount = steppedSkillDefInfo.stepCount;
